@@ -29,3 +29,19 @@
 - **sudo pvcreate /dev/xvdf1**
 - **sudo pvcreate /dev/xvdg1**
 - **sudo pvcreate /dev/xvdh1**
+  ![Alt text](images/pro7.9.PNG)
+
+- sudo pvs to check for the physical volume![Alt text](images/pro7.10.PNG)
+
+6. create volume group "webdata" with and add the physical volume to the group
+   **sudo vgcreate webdata-vg /dev/xvdh1 /dev/xvdg1 /dev/xvdf1**
+
+- check the group with sudo vgs![Alt text](images/pro7.11.PNG)
+
+7. creating Logical volumes
+
+- lv-apps
+- lv-logs
+- lv-opt
+- Each with 9G memeory and added the to the webdata-vg gropu i.e ** sudo lvcreate -n lv-apps -L 9G webata-vg**
+  ![Alt text](images/pro7.12.PNG)
