@@ -9,13 +9,23 @@
 3. The ubuntu server is named as DB
    [Servers image]![Alt text](images/proj7.1.PNG)
 
-- command lsbk to list block devices
+- command **lsbk** to list block devices
   on NFS ![Alt text](images/pro7.2.PNG)
 
-- command sudo gdisk to creat partition on
+- command **sudo gdisk** to creat partition on
 
   - /dev/xvdf ![Alt text](images/pro7.3.PNG)
   - /dev/xvdg ![Alt text](images/pro7.4.PNG)
   - /dev/xvdh ![Alt text](images/pro7.5.PNG)
 
-- command lsbk to list block devices![Alt text](images/pro7.6.PNG)
+- command **lsbk** to list block devices![Alt text](images/pro7.6.PNG)
+
+4. installing lvm2 wih **sudo yum install lvm2 -y**
+
+- command **sudo lvmdiskscan** to check for lvm partition
+
+5. creating physical volumes with on the partition
+
+- **sudo pvcreate /dev/xvdf1**
+- **sudo pvcreate /dev/xvdg1**
+- **sudo pvcreate /dev/xvdh1**
