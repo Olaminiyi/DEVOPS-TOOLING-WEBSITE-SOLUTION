@@ -45,3 +45,22 @@
 - lv-opt
 - Each with 9G memeory and added the to the webdata-vg gropu i.e ** sudo lvcreate -n lv-apps -L 9G webata-vg**
   ![Alt text](images/pro7.12.PNG)
+
+8. formating the 3 logical volumes as xfs
+
+- **sudo mkfs -t xfs /dev/webdata-vg/lv-apps**
+- **sudo mkfs -t xfs /dev/webdata-vg/lv-log**
+- **sudo mkfs -t xfs /dev/webdata-vg/lv-opt**
+  ![Alt text](images/pro7.13.PNG)
+
+9. Creating mount points on /mnt directory for the logical volumes
+
+- Mount lv-apps on /mnt/apps – To be used by webservers
+- Mount lv-logs on /mnt/logs – To be used by webserver logs
+- Mount lv-opt on /mnt/opt – To be used by Jenkins server
+  - **sudo mkdir /mnt/apps**
+  - **sudo mkdir /mnt/logs**
+  - **sudo mkdir /mnt/opt**
+    - **sudo mount /dev/webdata-vg/lv-apps /mnt/apps**
+    - **sudo mount /dev/webdata-vg/lv-apps /mnt/logs**
+    - **sudo mount /dev/webdata-vg/lv-apps /mnt/opt**
