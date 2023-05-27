@@ -64,3 +64,25 @@
     - **sudo mount /dev/webdata-vg/lv-apps /mnt/apps**
     - **sudo mount /dev/webdata-vg/lv-apps /mnt/logs**
     - **sudo mount /dev/webdata-vg/lv-apps /mnt/opt**
+
+10. Install NFS server, configure it to start on reboot and make sure it is rumming
+
+- **sudo yum -y update**
+
+11. configure the Database while updating NFS Server
+
+- install msql server **sudo apt install mysql-server**
+
+- Create a database and name it tooling
+
+  - **sudo mysql**
+  - **create database tooling;**
+
+- Create a database user and name it webaccess, grant permission only from the webservers subnet id
+
+  - **create user 'webaccess'@'172.31.32.0/20' identified by 'password'**
+
+- Grant all privileges
+  - grant all privileges on tooling.\* to 'webaccess'@172.31.32.0/20';
+- flush privileges
+  - **flush privileges;**
