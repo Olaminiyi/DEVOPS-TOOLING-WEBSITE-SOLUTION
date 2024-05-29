@@ -318,14 +318,14 @@ i.e sudo vi /etc/fstab
 172.31.46.236:/mnt/logs /var/log/httpd nfs defaults 0 0
 
 
-Fork the tooling source code from Darey.io Github Account to your Github account
+Fork the tooling source code from [Github Account](https://github.com/Olaminiyi/tooling.git) to your Github account
 
 install git: sudo yum install git
 ```
 git init
 ```
 ```
-git clone https://github.com/darey-io/tooling.git
+git clone https://github.com/Olaminiyi/tooling.git
 ```
 ```
 ls
@@ -346,41 +346,63 @@ sudo cp -R html/. /var/www/html
   
 ![Alt text](images/pro7.24.PNG)
 
-24. check permissions to your /var/www/html folder and also disable SELinux sudo setenforce 0
-    To make this change permanent – open following config file sudo vi /etc/sysconfig/selinux and set SELINUX=disabledthen restrt httpd.
+check permissions to your /var/www/html folder and also disable SELinux sudo setenforce 0
+To make this change permanent – open following config file 
+```
+sudo vi /etc/sysconfig/selinux 
+```
+and set SELINUX=disabled then restart httpd.
 
-- cd .. out from tooling
-- **sudo setenforce 0**
-- **sudo vi /etc/sysconfig/selinux**
-- set SELINUX=disabledthen
-- **sudo systemctl start httpd**
-- **sudo systemctl status httpd**
+cd .. out from tooling
+```
+sudo setenforce 0
+```
+```
+sudo vi /etc/sysconfig/selinux
+```
+
+set SELINUX=disabled
+
+then
+```
+sudo systemctl start httpd
+```
+```
+sudo systemctl status httpd
+```
 
 ![Alt text](images/pro7.25.png)
 
 
-27. Update the website’s configuration to connect to the database
-
-- vi /var/www/html/functions.php
-- under connection to the database
-- edit admin (username) to webaccess
-- edit admin (password) to password
-- edit mysql.tooling.svc.cluster.local to (db private ip address)
+Update the website’s configuration to connect to the database
+```
+vi /var/www/html/functions.php
+```
+under connection to the database
+edit `admin` (username) to `webaccess`
+edit `admin` (password) to `password`
+edit `mysql.tooling.svc.cluster.local` to (db private ip address)
 
 ![Alt text](images/pro7.26.png)
 
-- in the the database security group
-  - allow mysql/aurora rule on Database using the Subnet-CIDR (from anywhere 0.0.0.0)of the webserver 1
+in the the database security group
+allow `mysql/aurora` rule on Database using the **Subnet-CIDR (from anywhere 0.0.0.0)** of the webserver 1
+
 ![Alt text](images/pro7.27.png)
 
-28. on the database
+Follow this steps on the database
+```
+vi /etc/mysql/mysql.conf.d/mysqld.cnf
+```
 
-- **vi /etc/mysql/mysql.conf.d/mysqld.cnf**
-- change the bind address to 0.0.0.0
-- change the mysqlx-bind-address to 0.0.0.0
-- **sudo systemctl restart mysql**
-- **sudo systemctl status mysql**
-
+change the bind address to 0.0.0.0
+change the mysqlx-bind-address to 0.0.0.0
+```
+sudo systemctl restart mysql
+```
+```
+sudo systemctl status mysql
+```
 ![Alt text](images/pro7.28.png)
 
 29. on the webserver 1
