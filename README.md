@@ -35,3 +35,19 @@ created 4 Redhat Linux servers and 1 ubuntu server named
 - NFS
 
 ![alt text](images/pro7.1.PNG)
+
+create 3 volumes from Elastic block stores in the same availability zone as the NFS server and attach the 3 volumes to the NFS server
+
+use command **lsblk** to list block devices on NFS
+```
+lsblk
+```
+![alt text](images/pro7.2.PNG)
+
+use command **sudo gdisk** to creat partition on the attached device i.e /dev/xvdf,dev/xvdg and /dev/xvdh
+```
+sudo gdisk
+```
+![alt text](images/pro7.3.PNG)
+![alt text](images/pro7.4.PNG)
+![alt text](images/pro7.5.PNG)
