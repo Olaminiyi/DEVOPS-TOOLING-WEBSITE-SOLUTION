@@ -161,3 +161,80 @@ sudo mysql
 ```
 create database tooling;
 ```
+Create a database user and name it webaccess, grant permission only from the webservers subnet id(webserver 1)
+```
+create user 'webaccess'@'172.31.32.0/20' identified by 'password'
+```
+Grant all privileges
+```
+grant all privileges on tooling.\* to 'webaccess'@'172.31.32.0/20';
+```
+flush privileges
+```
+flush privileges;
+```
+![alt text](images/pro7.14.PNG)
+
+Install NFS server, configure it to start on reboot and make sure it is rumming
+```
+sudo yum -y update
+```
+```
+sudo yum install nfs-utils -y
+```
+```
+sudo systemctl start nfs-server.service
+```
+```
+sudo systemctl enable nfs-server.service
+```
+```
+sudo systemctl status nfs-server.service
+```
+![alt text](images/pro7.15.PNG)
+
+set permission that allows web server to read, write and exexcute files on NFS
+```
+sudo chown -R nobody: /mnt/apps
+```
+```
+sudo chown -R nobody: /mnt/logs
+```
+```
+sudo chown -R nobody: /mnt/opt
+```
+```
+sudo chmod -R 777 /mnt/apps
+```
+```
+sudo chmod -R 777 /mnt/logs
+```
+```
+sudo chmod -R 777 /mnt/opt
+```
+```
+sudo systemctl restart nfs-server.service
+```
+
+Configure access to NFS for clients within the same subnet using(webserver 1: 172.31.32.0/20)
+```
+sudo vi /etc/exports
+```
+```
+mnt/apps <Subnet-CIDR>(rw,sync,no_all_squash,no_root_squash)
+```
+```
+mnt/logs <Subnet-CIDR>(rw,sync,no_all_squash,no_root_squash)
+```
+```
+mnt/opt <Subnet-CIDR>(rw,sync,no_all_squash,no_root_squash)
+```
+save with: esc:wq! 
+
+Export all the subnet access configuration so the webserver can see all the mount points when we want to connect with this command
+```
+sudo exportfs -arv
+```
+![alt text](images/pro7.16.PNG)
+
+

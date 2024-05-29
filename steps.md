@@ -98,7 +98,8 @@
 - **sudo yum install nfs-utils -y**
 - **sudo systemctl start nfs-server.service**
 - **sudo systemctl enable nfs-server.service**
-- **sudo systemctl status nfs-server.service**![Alt text](images/pro7.15.PNG)
+- **sudo systemctl status nfs-server.service**
+![Alt text](images/pro7.15.PNG)
 
 12. set permission that allows web server to read, write and exexcute files on NFS
 
