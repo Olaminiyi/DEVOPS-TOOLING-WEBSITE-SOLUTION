@@ -35,6 +35,7 @@ created 3 Redhat Linux servers and 1 ubuntu server named
 - NFS.
 
 ![alt text](images/pro7.1.png)
+/Users/olaminiyi/Downloads/DEVOPS-TOOLING-WEBSITE-SOLUTION/images/pro7.1.png
 
 create 3 volumes from Elastic block stores in the same availability zone as the NFS server and attach the 3 volumes to the NFS server
 
