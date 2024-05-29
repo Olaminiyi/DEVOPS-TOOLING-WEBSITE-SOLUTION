@@ -454,5 +454,6 @@ sudo mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.backup
 
 ![Alt text](images/pro7.31.png)
 
-32. Open the website in your browser http://<Web-Server-Public-IP-Address-or-Public-DNS-Name>/index.php 
+Open the website in your browser http://<Web-Server-Public-IP-Address-or-Public-DNS-Name>/index.php 
+
 ![Alt text](images/proj7.32.png)
