@@ -390,7 +390,7 @@ allow `mysql/aurora` rule on Database using the **Subnet-CIDR (from anywhere 0.0
 
 ![Alt text](images/pro7.27.png)
 
-Follow this steps on the database
+### Follow these steps on the database
 ```
 vi /etc/mysql/mysql.conf.d/mysqld.cnf
 ```
@@ -405,33 +405,52 @@ sudo systemctl status mysql
 ```
 ![Alt text](images/pro7.28.png)
 
-29. on the webserver 1
+### Follow these steps on the webserver 1
 
-- install mysql on the webser
-  - **cd tooling**
-  - **sudo yum install mysql**
-- Apply tooling-db.sql script to your database using this command
-- mysql -h <databse-private-ip> -u <db-username> -p <database name> < tooling-db.sql
+install mysql on the webser
+```
+cd tooling
+```
+```  
+sudo yum install mysql
+```
+
+Apply tooling-db.sql script to your database using this command
+
+mysql -h <databse-private-ip> -u <db-username> -p <database name> < tooling-db.sql
 
 ![Alt text](images/pro7.29.png)
 
-30. on the database
-
-- **sudo mysql;**
-- **show databases;**
-- **use tooling;**
-- **show tables;**
-- **select * from users;**
-  put picture
+### Follow these steps on the database
+```
+sudo mysql;
+```
+```
+show databases;
+```
+```
+use tooling;
+```
+```
+show tables;
+```
+```
+select * from users;
+```  
 
 ![Alt text](images/proj7.30.png)
 
-31. to change the landing page on the webserver
-
-- cd tooling
-- vi /etc/httpd/conf.d/welcome.conf
-  create a backup
-- sudo mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.backup
+To change the landing page on the webserver follow these steps
+```
+cd tooling
+```
+```
+vi /etc/httpd/conf.d/welcome.conf
+```
+Create a backup
+```
+sudo mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.backup
+```
 
 ![Alt text](images/pro7.31.png)
 
