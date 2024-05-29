@@ -141,3 +141,23 @@ sudo mount /dev/webdata-vg/lv-apps /mnt/logs
 ```
 sudo mount /dev/webdata-vg/lv-apps /mnt/opt
 ```
+
+Install NFS server, configure it to start on reboot and make sure it is rumming
+```
+sudo yum -y update
+```
+
+configure the Database while updating NFS Server
+
+install msql server 
+```
+sudo apt install mysql-server
+```
+
+Create a database and name it tooling
+```
+sudo mysql
+```
+```
+create database tooling;
+```
