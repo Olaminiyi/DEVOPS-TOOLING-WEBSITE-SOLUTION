@@ -51,3 +51,29 @@ sudo gdisk
 ![alt text](images/pro7.3.PNG)
 ![alt text](images/pro7.4.PNG)
 ![alt text](images/pro7.5.PNG)
+
+use command **lsblk** to list block devices
+```
+lsblk
+```
+![alt text](images/pro7.6.PNG)
+
+installing lvm2 wih 
+```
+sudo yum install lvm2 -y
+```
+use command **sudo lvmdiskscan** to check for lvm partition
+```
+sudo lvmdiskscan
+```
+creating physical volumes with pvcreate on the partition
+```
+sudo pvcreate /dev/xvdf1
+```
+```
+sudo pvcreate /dev/xvdg1
+```
+```
+sudo pvcreate /dev/xvdh1
+```
+
