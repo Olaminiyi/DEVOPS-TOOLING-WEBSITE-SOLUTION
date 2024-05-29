@@ -29,10 +29,10 @@ This project uses a set of DevOps tools that will help the team in their day-to-
 In the diagram above, there is a common pattern where several stateless Web servers share a common database and also access the same files using the Network File System (NFS) as shared file storage. Even though the NFS server might be located on completely separate hardware, for web servers, it looks like a local file system from which they can serve the same files.
 
 created 3 Redhat Linux servers and 1 ubuntu server named
-- web-server1
-- web-server2
-- web-server3
-- NFS
+- web-server1.
+- web-server2.
+- web-server3.
+- NFS.
 
 ![alt text](images/pro7.1.png)
 
