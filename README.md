@@ -76,4 +76,68 @@ sudo pvcreate /dev/xvdg1
 ```
 sudo pvcreate /dev/xvdh1
 ```
+![alt text](images/pro7.9.PNG)
 
+check for the physical volume
+```
+sudo pvs 
+```
+![alt text](images/pro7.10.PNG)
+
+create volume group "webdata" with and add the physical volume to the group
+```
+ sudo vgcreate webdata-vg /dev/xvdh1 /dev/xvdg1 /dev/xvdf1
+ ```
+ check the group with 
+ ```
+ sudo vgs
+ ```
+ ![alt text](images/pro7.11.PNG)
+
+ creating Logical volumes
+
+- lv-apps
+- lv-logs
+- lv-opt
+
+Each with 9G memeory and added the to the webdata-vg group
+```
+sudo lvcreate -n lv-apps -L 9G webata-vg
+```
+![alt text](images/pro7.12.PNG)
+
+formating the 3 logical volumes as xfs
+```
+sudo mkfs -t xfs /dev/webdata-vg/lv-apps
+```
+```
+sudo mkfs -t xfs /dev/webdata-vg/lv-log
+```
+```
+sudo mkfs -t xfs /dev/webdata-vg/lv-opt
+```
+![alt text](images/pro7.13.PNG)
+
+Creating mount points on /mnt directory for the logical volumes
+
+Mount lv-apps on /mnt/apps – To be used by webservers
+Mount lv-logs on /mnt/logs – To be used by webserver logs
+Mount lv-opt on /mnt/opt – To be used by Jenkins server
+```
+sudo mkdir /mnt/apps
+```
+```
+sudo mkdir /mnt/logs
+```
+```
+sudo mkdir /mnt/opt
+```
+```
+sudo mount /dev/webdata-vg/lv-apps /mnt/apps
+```
+```
+sudo mount /dev/webdata-vg/lv-apps /mnt/logs
+```
+```
+sudo mount /dev/webdata-vg/lv-apps /mnt/opt
+```
